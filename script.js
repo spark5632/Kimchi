@@ -6,7 +6,7 @@
    Example value: 'https://github.com/your-name/your-repository'
    ========================================================= */
 const SITE_CONFIG = Object.freeze({
-  githubRepository: "https://github.com/spark5632/Kimchi"
+  githubRepository: 'https://github.com/spark5632/Kimchi'
 });
 
 (() => {
@@ -501,7 +501,10 @@ const SITE_CONFIG = Object.freeze({
   const cursor = document.createElement('div');
   cursor.className = 'kimchi-cursor-fx';
   cursor.setAttribute('aria-hidden', 'true');
-  cursor.innerHTML = '<img src="assets/images/kimchi-cursor.png" alt="">';
+  cursor.innerHTML = `
+    <img class="kimchi-cursor-normal" src="assets/images/kimchi-cursor.png" alt="">
+    <img class="kimchi-cursor-hover" src="assets/images/kimchi-cursor-hover.png" alt="">
+  `;
   document.body.appendChild(cursor);
   document.documentElement.classList.add('kimchi-cursor-enabled');
 
@@ -528,7 +531,7 @@ const SITE_CONFIG = Object.freeze({
   function updateHoverState(target) {
     const interactive = isInteractiveTarget(target);
     cursor.classList.toggle('is-interactive', interactive);
-    targetScale = interactive ? 1.34 : 1;
+    targetScale = interactive ? 1.10 : 1;
   }
 
   function renderCursor() {
@@ -765,7 +768,7 @@ const SITE_CONFIG = Object.freeze({
     ring.classList.add('is-visible');
 
     const start = performance.now();
-    const duration = fast ? 520 : (reducedMotion ? 520 : 1800);
+    const duration = fast ? 520 : (reducedMotion ? 520 : 1500);
     // Radius from viewport center to the furthest corner, plus breathing room.
     const maxRadius = Math.hypot(window.innerWidth / 2, window.innerHeight / 2) + 140;
 
@@ -796,7 +799,7 @@ const SITE_CONFIG = Object.freeze({
   // center-out circular reveal. Reduced-motion users see a shorter intro.
   revealTimer = window.setTimeout(
     () => startReveal(false),
-    reducedMotion ? 720 : 3180
+    reducedMotion ? 720 : 2700
   );
 
   skip?.addEventListener('click', () => startReveal(true));
