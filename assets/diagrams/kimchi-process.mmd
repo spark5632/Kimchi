@@ -1,0 +1,24 @@
+flowchart TD
+    A([เริ่มต้น]) --> B[เตรียมวัตถุดิบ]
+    B --> C[ล้างและผ่าผักกาดขาว]
+    C --> D[หมักเกลือ]
+    D --> E[ล้างเกลือและพักให้สะเด็ดน้ำ]
+    E --> F[เตรียมซอสกิมจิ]
+    F --> G[คลุกซอสกับผักกาดขาว]
+    G --> H[บรรจุลงภาชนะสะอาด]
+    H --> I[หมักกิมจิ]
+    I --> J{รสชาติได้ตามต้องการหรือยัง?}
+    J -- ยัง --> K[หมักต่ออีกระยะหนึ่ง]
+    K --> I
+    J -- ได้แล้ว --> L[นำไปแช่เย็น]
+    L --> M([เก็บรักษาและรับประทาน])
+
+    classDef prep fill:#FFFDF9,stroke:#D5D2C8,color:#242320,rx:12,ry:12;
+    classDef ferment fill:#FBEFEA,stroke:#B8322A,color:#7D201D,rx:12,ry:12;
+    classDef decision fill:#FAF0D2,stroke:#C6AC60,color:#242320;
+    classDef cold fill:#EAF0E6,stroke:#78936C,color:#365D3B,rx:12,ry:12;
+    class A,B,C,D,E,F,G,H prep;
+    class I,K ferment;
+    class J decision;
+    class L,M cold;
+    linkStyle default stroke:#78936C,stroke-width:1.2px;

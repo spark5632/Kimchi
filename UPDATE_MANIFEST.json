@@ -1,0 +1,53 @@
+{
+  "source_pdf": "Mastering_Authentic_Kimchi.pdf",
+  "source_sha256": "6c88d9530dc151d2d460f75b94beade06285f0197adf70ad4415738c5594a97b",
+  "bundled_pdf_sha256": "6c88d9530dc151d2d460f75b94beade06285f0197adf70ad4415738c5594a97b",
+  "slide_count": 8,
+  "slide_order": [
+    {
+      "title": "Authentic Whole Napa Cabbage Kimchi",
+      "src": "assets/slides/authentic-kimchi/page-01.webp",
+      "page": 1
+    },
+    {
+      "title": "Taste meets Health",
+      "src": "assets/slides/authentic-kimchi/page-02.webp",
+      "page": 2
+    },
+    {
+      "title": "The Ingredient Matrix",
+      "src": "assets/slides/authentic-kimchi/page-03.webp",
+      "page": 3
+    },
+    {
+      "title": "The Science of Osmosis",
+      "src": "assets/slides/authentic-kimchi/page-04.webp",
+      "page": 4
+    },
+    {
+      "title": "The Sauce Equation",
+      "src": "assets/slides/authentic-kimchi/page-05.webp",
+      "page": 5
+    },
+    {
+      "title": "The Craft of Coating",
+      "src": "assets/slides/authentic-kimchi/page-06.webp",
+      "page": 6
+    },
+    {
+      "title": "Fermentation Dynamics",
+      "src": "assets/slides/authentic-kimchi/page-07.webp",
+      "page": 7
+    },
+    {
+      "title": "The Master's Finish",
+      "src": "assets/slides/authentic-kimchi/page-08.webp",
+      "page": 8
+    }
+  ],
+  "typography": {
+    "english_and_numbers": "Inter",
+    "thai": "Noto Sans Thai",
+    "embedded_slide_text": "Unchanged"
+  }
+}
