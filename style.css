@@ -15,11 +15,9 @@
   --ease: cubic-bezier(.22,.68,0,1); --header-height: 84px;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 104px;
-cursor: url("assets/images/kimchi-cursor.png") 8 8, auto; }
+html { scroll-behavior: smooth; scroll-padding-top: 104px; }
 
-body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--body); font-size: 17px; line-height: 1.8; -webkit-font-smoothing: antialiased; 
-cursor: url("assets/images/kimchi-cursor.png") 8 8, auto;}
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--body); font-size: 17px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
 body.menu-open, body.dialog-open { overflow: hidden; }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -1286,166 +1284,6 @@ body { font-optical-sizing: auto; }
 }
 
 /* =========================================================
-   CUSTOM KIMCHI CURSOR / SMOOTH INTERACTION
-   - 50% opacity over non-clickable content
-   - 100% opacity + blooming hover image over interactive controls
-   - smooth follow + subtle tilt while moving
-   - chili particles on click
-   - desktop / fine pointer only
-   ========================================================= */
-
-.kimchi-cursor-fx {
-  --cursor-x: -100px;
-  --cursor-y: -100px;
-  --cursor-rotate: 0deg;
-  --cursor-scale: 1;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999;
-  width: 48px;
-  height: 48px;
-  pointer-events: none;
-  user-select: none;
-  opacity: 0;
-  transform:
-    translate3d(var(--cursor-x), var(--cursor-y), 0)
-    translate(-6px, -6px)
-    rotate(var(--cursor-rotate))
-    scale(var(--cursor-scale));
-  transform-origin: 6px 6px;
-  will-change: transform, opacity;
-  transition: opacity .22s ease, filter .25s ease;
-}
-
-.kimchi-cursor-fx img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  transform-origin: 6px 6px;
-  filter: drop-shadow(0 4px 5px rgba(64, 35, 25, .18));
-  transition:
-    opacity .16s ease,
-    transform .24s var(--ease),
-    filter .25s ease;
-}
-
-/* Normal cursor is shown while the pointer is over non-clickable content. */
-.kimchi-cursor-normal {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-/* The open / blooming kimchi is preloaded but hidden until a clickable target is found. */
-.kimchi-cursor-hover {
-  opacity: 0;
-  transform: scale(.82) rotate(-4deg);
-}
-
-/* Cross-fade from the normal kimchi to the blooming kimchi on links/buttons. */
-.kimchi-cursor-fx.is-interactive .kimchi-cursor-normal {
-  opacity: 0;
-  transform: scale(.82) rotate(3deg);
-}
-
-.kimchi-cursor-fx.is-interactive .kimchi-cursor-hover {
-  opacity: 1;
-  transform: scale(1.08) rotate(0deg);
-  filter:
-    drop-shadow(0 6px 8px rgba(64, 35, 25, .22))
-    saturate(1.08);
-}
-
-/* Visible over normal content = 50% opacity. */
-.kimchi-cursor-fx.is-visible {
-  opacity: .85;
-}
-
-/* Clickable / interactive target = fully visible and slightly larger. */
-.kimchi-cursor-fx.is-visible.is-interactive {
-  opacity: 1;
-  filter: saturate(1.06);
-}
-
-/* Tiny feedback while mouse button is held. */
-.kimchi-cursor-fx.is-clicking img {
-  filter: drop-shadow(0 2px 3px rgba(64, 35, 25, .16)) saturate(1.08);
-}
-
-/* Chili / red-dot click particles. */
-.kimchi-pepper-particle {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 99998;
-  width: var(--size, 5px);
-  height: calc(var(--size, 5px) * .68);
-  border-radius: 70% 35% 65% 40%;
-  background: var(--particle-color, var(--red));
-  pointer-events: none;
-  transform: translate3d(var(--start-x), var(--start-y), 0) translate(-50%, -50%);
-  transform-origin: center;
-  animation: kimchi-pepper-pop .58s cubic-bezier(.16,.8,.28,1) forwards;
-  will-change: transform, opacity;
-}
-
-@keyframes kimchi-pepper-pop {
-  0% {
-    opacity: .95;
-    transform:
-      translate3d(var(--start-x), var(--start-y), 0)
-      translate(-50%, -50%)
-      rotate(0deg)
-      scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform:
-      translate3d(
-        calc(var(--start-x) + var(--travel-x)),
-        calc(var(--start-y) + var(--travel-y)),
-        0
-      )
-      translate(-50%, -50%)
-      rotate(var(--particle-rotate))
-      scale(.35);
-  }
-}
-
-/* Only replace the native cursor on devices that actually have a mouse. */
-@media (hover: hover) and (pointer: fine) {
-  html.kimchi-cursor-enabled,
-  html.kimchi-cursor-enabled body,
-  html.kimchi-cursor-enabled body * {
-    cursor: none !important;
-  }
-}
-
-/* Touch screens never need the decorative cursor. */
-@media (hover: none), (pointer: coarse) {
-  .kimchi-cursor-fx,
-  .kimchi-pepper-particle {
-    display: none !important;
-  }
-}
-
-/* Respect the operating system's reduced-motion preference. */
-@media (prefers-reduced-motion: reduce) {
-  .kimchi-cursor-fx {
-    transition: opacity .01ms linear !important;
-  }
-
-  .kimchi-pepper-particle {
-    display: none !important;
-  }
-}
-
-/* =========================================================
    FOOD DECOR / KIMCHI PANTRY EDITORIAL LAYER
    Real ingredient cutouts are deliberately kept near section
    edges so the portfolio feels edible without obscuring content.
@@ -2381,14 +2219,6 @@ body {
   body {
     zoom: .90;
   }
-
-  /* The custom cursor is fixed-position and lives inside <body>.
-     Cancel the parent's 90% zoom so it still tracks the physical mouse
-     position at the intended 48px size. */
-  .kimchi-cursor-fx,
-  .kimchi-pepper-particle {
-    zoom: 1.111111;
-  }
 }
 
 /* At medium desktop widths the cabbage still keeps its shape but does
@@ -3023,11 +2853,6 @@ html.intro-js .kimchi-intro-ring {
 
 html.intro-js .kimchi-intro-ring.is-visible { opacity: .75; }
 
-body.intro-active .kimchi-cursor-fx,
-body.intro-active .kimchi-pepper-particle {
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
 
 @keyframes kimchiIntroOrbit {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(.72) rotate(0deg); }
@@ -3178,9 +3003,3 @@ body.intro-active .kimchi-pepper-particle {
   }
 }
 
-/* During the intro the decorative JS cursor is hidden, so keep the
-   SKIP button's native pointer visible even though the rest of the site
-   normally uses cursor:none for the custom kimchi cursor. */
-html.kimchi-cursor-enabled body.intro-active .kimchi-intro-skip {
-  cursor: pointer !important;
-}
