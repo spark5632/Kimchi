@@ -1330,7 +1330,7 @@ body { font-optical-sizing: auto; }
 
 /* Visible over normal content = 50% opacity. */
 .kimchi-cursor-fx.is-visible {
-  opacity: .80;
+  opacity: .90;
 }
 
 /* Clickable / interactive target = fully visible and slightly larger. */
