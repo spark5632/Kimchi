@@ -6,7 +6,7 @@
    Example value: 'https://github.com/your-name/your-repository'
    ========================================================= */
 const SITE_CONFIG = Object.freeze({
-  githubRepository: ''
+  githubRepository: "https://github.com/spark5632/Kimchi"
 });
 
 (() => {
@@ -765,7 +765,7 @@ const SITE_CONFIG = Object.freeze({
     ring.classList.add('is-visible');
 
     const start = performance.now();
-    const duration = fast ? 520 : (reducedMotion ? 520 : 2000);
+    const duration = fast ? 520 : (reducedMotion ? 520 : 1800);
     // Radius from viewport center to the furthest corner, plus breathing room.
     const maxRadius = Math.hypot(window.innerWidth / 2, window.innerHeight / 2) + 140;
 
